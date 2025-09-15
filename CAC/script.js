@@ -423,7 +423,7 @@ function renderUserDashboardPage(userDetails) {
   localStorage.setItem('userDetailsTimestamp', Date.now());
 
   // Redirect to user.html
-  window.location.href = 'home.html';
+  window.location.href = 'validate.php';
 }
 
 // Function Polling for authentication status

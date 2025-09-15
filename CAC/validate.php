@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const userDetails = JSON.parse(userDetailsJSON);
 
     if (!userDetails || !userDetails.name) {
-        window.location.href = "login.html";
+        window.location.href = "login.html?a=failedcredentials";
         return;
     }
 
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.json())
     .then(data => {
         if (data.status === "success") {
-            window.location.href = "home.html";
+            window.location.href = "home.php";
         } else {
             window.location.href = "login.html";
         }
