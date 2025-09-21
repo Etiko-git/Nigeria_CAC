@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICRP - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+    <div class="header-container">
+            <div class="logo" onclick="window.location.href='index.html';">
+                <div class="logo-text">ICRP</div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="register.php" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="login-container">
+            <div class="login-header">
+                <div class="login-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h2>Login to ICRP</h2>
+                <p>Access your corporate registration portal account</p>
+            </div>
+
+
+            <form autocomplete="off" onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" class="form-control"
+                            placeholder="Enter your email address" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-icon">
+                        <i class="fas fa-key"></i>
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Enter your password" required>
+                    </div>
+                </div>
+
+                <button id="login-myID-btn" type="submit" class="form-btn">Login</button>
+
+                <div class="login-links">
+                    <a href="forgot-password.php">Forgot Password?</a>
+                </div>
+
+                <div class="divider"><span>OR</span></div>
+
+                <div class="login-links">
+                    Don't have an account? <a href="register.php">Register here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Redirect to another page upon successful login
+            window.location.href = 'myIDlogin.html'; // Change to your desired URL
+        }
+    </script>
+</body>
+
+</html>

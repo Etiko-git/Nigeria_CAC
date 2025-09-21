@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - myID</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/myIDlogin.css">
+  <style>
+    /* Mobile Navigation Styles */
+    .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .nav-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #1b5e20;
+        margin: 2px 0;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+        .header-container {
+            padding: 15px;
+            position: relative;
+        }
+        
+        .nav-toggle {
+            display: flex;
+        }
+        
+        /* Hide regular navigation on mobile */
+        nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 100vh;
+            background-color: white;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 80px;
+            transform: translateX(100%);
+            transition: transform 0.4s ease-in-out;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+        
+        /* Navigation when active */
+        nav.active {
+            display: flex;
+            transform: translateX(0);
+        }
+        
+        nav ul {
+            flex-direction: column;
+            text-align: center;
+            gap: 30px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        nav ul li a {
+            font-size: 1.2rem;
+            display: block;
+            padding: 10px 0;
+        }
+        
+        /* Mobile auth buttons inside navigation */
+        nav .auth-buttons {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        nav .auth-buttons .btn {
+            padding: 12px 20px;
+            font-size: 1rem;
+        }
+        
+        /* Hide desktop auth buttons on mobile */
+        .header-container > .auth-buttons {
+            display: none;
+        }
+        
+        /* Hamburger animation */
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Adjust login container for mobile */
+        .login-container {
+            padding: 90px 15px 40px;
+        }
+    }
+
+    /* Desktop Styles - Show desktop auth buttons */
+    @media (min-width: 769px) {
+        .header-container > .auth-buttons {
+            display: flex;
+        }
+        
+        nav .auth-buttons {
+            display: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        nav .auth-buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        nav .auth-buttons .btn {
+            width: 80%;
+        }
+    }
+  </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo" onclick="window.location.href='index.html';">
+                <div class="logo-text">ICRP</div>
+            </div>
+            
+            <!-- Hamburger menu button -->
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                
+                <!-- Auth buttons for mobile view -->
+                <div class="auth-buttons">
+                    <a href="myIDlogin.html" class="btn btn-outline">Login</a>
+                    <a href="register.php" class="btn btn-primary">Register</a>
+                </div>
+            </nav>
+            
+            <!-- Auth buttons for desktop view -->
+            <div class="auth-buttons">
+                <a href="myIDlogin.html" class="btn btn-outline">Login</a>
+                <a href="register.php" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="login-container" id="login-container">
+        <div class="login-card" id="myid-ui-container">
+            <h2 class="login-heading">Choose Login Method</h2>
+            <div class="button-group">
+                <button class="login-btn" onclick="loginWithMyIDOnSameDevice()">
+                    <img src="img/myid-logo.png" alt="myID" class="btn-icon-rounded" />
+                    <div>
+                        <span><strong>myID on the same device</strong></span>
+                        <span style="color:rgb(80, 80, 190)"> <br>(Deep Link)</span>
+                    </div>
+                </button>
+                <button class="login-btn" onclick="generateQRCodeForAnotherDevice()">
+                    <img src="img/myid-logo.png" alt="myID" class="btn-icon-rounded" />
+                    <div>
+                        <span><strong>myID on a different device</strong></span>
+                        <span style="color:rgb(83, 83, 184)"> <br>(QR Code)</span>
+                    </div>
+                </button>
+            </div>
+            <p class="support-link">
+                Having trouble? <a href="#">Contact support</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>About ICRP</h3>
+                <p>The Integrated Corporate Registration Portal is a government initiative to simplify business registration and corporate affairs management in Nigeria.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Company Registration</a></li>
+                    <li><a href="#">Business Name Registration</a></li>
+                    <li><a href="#">Annual Returns Filing</a></li>
+                    <li><a href="#">Name Availability Search</a></li>
+                    <li><a href="#">Document Certification</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 CAC Building, Central Business District, Abuja</li>
+                    <li><i class="fas fa-phone"></i> +234 800 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> info@icrp.gov.ng</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023 Integrated Corporate Registration Portal. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="qrcode.min.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        navToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(event) {
+            if (mainNav.classList.contains('active') && 
+                !event.target.closest('#mainNav') && 
+                !event.target.closest('#navToggle')) {
+                mainNav.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
