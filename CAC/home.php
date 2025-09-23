@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-    header("Location: login.html");
+    header("Location: myIDlogin.html?a=sessionexpired");
     exit();
 }
 ?>
@@ -19,7 +19,7 @@ if (!isset($_SESSION['id'])) {
 <body>
     <!-- Header -->
     <header>
-    <div class="header-container">
+        <div class="header-container">
             <div class="logo" onclick="window.location.href='index.html';">
                 <div class="logo-text">ICRP</div>
             </div>
@@ -28,11 +28,10 @@ if (!isset($_SESSION['id'])) {
                 <div class="user-info">
                     <div class="welcome">Welcome back</div>
                     <div class="username">
-                        <?php echo isset($_SESSION['fullname']) ? $_SESSION['fullname'] : 'User'; ?>
-                        
+                        <?php echo isset($_SESSION['fullname']) ? htmlspecialchars($_SESSION['fullname']) : 'User'; ?>
                     </div>
                 </div>
-                <a href="index.html" class="btn btn-logout" onclick="window.location.href='logout.php'">Logout</a>
+                <a href="logout.php" class="btn-logout">Logout</a>
             </div>
         </div>
     </header>

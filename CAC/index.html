@@ -9,29 +9,42 @@
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <!-- Header -->
     <header id="header">
     <div class="header-container">
-            <div class="logo" onclick="window.location.href='index.html';">
-                <div class="logo-text">ICRP</div>
-            </div>
+        <div class="logo" onclick="window.location.href='index.html';">
+            <div class="logo-text">ICRP</div>
+        </div>
+        
+        <!-- Add this hamburger menu button -->
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <nav id="mainNav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
             
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-            
+            <!-- Move auth buttons inside nav for mobile -->
             <div class="auth-buttons">
-                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="myIDlogin.html" class="btn btn-outline">Login</a>
                 <a href="register.php" class="btn btn-primary">Register</a>
             </div>
+        </nav>
+        
+        <!-- Keep auth buttons for desktop -->
+        <div class="auth-buttons">
+            <a href="myIDlogin.html" class="btn btn-outline">Login</a>
+            <a href="register.php" class="btn btn-primary">Register</a>
         </div>
-    </header>
+    </div>
+</header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -39,7 +52,7 @@
             <h1 class="fade-in">Integrated Corporate Registration Portal</h1>
             <p class="fade-in">Streamlining business registration and corporate affairs in Nigeria. Fast, efficient, and transparent services for entrepreneurs and businesses.</p>
             <div class="hero-buttons fade-in">
-                <a href="#" class="btn btn-accent">Get Started</a>
+                <a href="myIDlogin.html" class="btn btn-accent">Login</a>
                 <a href="#" class="btn btn-outline">Learn More</a>
             </div>
             <div class="hero-image zoom-in">
@@ -232,5 +245,25 @@
             });
         });
     </script>
+    <script>
+    // Mobile navigation toggle
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    navToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+    
+    // Close mobile nav when clicking outside
+    document.addEventListener('click', function(event) {
+        if (mainNav.classList.contains('active') && 
+            !event.target.closest('#mainNav') && 
+            !event.target.closest('#navToggle')) {
+            mainNav.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
+</script>
 </body>
 </html>

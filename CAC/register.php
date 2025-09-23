@@ -6,8 +6,404 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - ICRP Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/register.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background-color: #1b5e20;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2e7d32;
+        }
+        
+        .btn-outline {
+            border: 2px solid #1b5e20;
+            color: #1b5e20;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: #1b5e20;
+            color: white;
+        }
+        
+        /* Header Styles */
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        #header.scrolled {
+            padding: 10px 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            cursor: pointer;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #1b5e20;
+        }
+        
+        /* Mobile Navigation Toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #1b5e20;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+        
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: #1b5e20;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 100px 0 60px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .left-panel {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .left-panel h2 {
+            color: #1b5e20;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .left-panel p {
+            margin-bottom: 25px;
+            color: #555;
+        }
+        
+        .left-panel img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        
+        .right-panel {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-title {
+            color: #1b5e20;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #1b5e20;
+            outline: none;
+        }
+        
+        .form-control.is-invalid {
+            border-color: #dc3545;
+        }
+        
+        .error {
+            display: block;
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .password-hint {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        .form-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .form-btn-primary {
+            background-color: #1b5e20;
+            color: white;
+        }
+        
+        .form-btn-primary:hover {
+            background-color: #2e7d32;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .login-link a {
+            color: #1b5e20;
+            font-weight: 500;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .success-message i {
+            margin-right: 10px;
+        }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            /* Header and Navigation */
+            .header-container {
+                padding: 15px;
+            }
+            
+            .nav-toggle {
+                display: flex;
+            }
+            
+            /* Navigation when active */
+            nav.active {
+                transform: translateX(0);
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform 0.4s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            nav ul li a {
+                font-size: 1.2rem;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+                margin-top: 30px;
+            }
+            
+            .desktop-auth {
+                display: none;
+            }
+            
+            /* Main Content */
+            .main-content {
+                padding: 90px 0 40px;
+            }
+            
+            .container {
+                flex-direction: column;
+                gap: 30px;
+                padding: 0 15px;
+            }
+            
+            .left-panel, .right-panel {
+                padding: 25px 20px;
+            }
+            
+            .left-panel h2, .form-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .left-panel, .right-panel {
+                padding: 20px 15px;
+            }
+            
+            .form-title {
+                font-size: 1.4rem;
+            }
+            
+            .form-control {
+                padding: 10px 12px;
+                font-size: 14px;
+            }
+            
+            .form-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +414,13 @@
                 <div class="logo-text">ICRP</div>
             </div>
 
-            <nav>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Services</a></li>
@@ -26,10 +428,15 @@
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
+                
+                <div class="auth-buttons">
+                    <a href="myIDlogin.html" class="btn btn-outline">Login</a>
+                    <a href="register.php" class="btn btn-primary">Register</a>
+                </div>
             </nav>
-
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-outline">Login</a>
+            
+            <div class="auth-buttons desktop-auth">
+                <a href="myIDlogin.html" class="btn btn-outline">Login</a>
                 <a href="register.php" class="btn btn-primary">Register</a>
             </div>
         </div>
@@ -48,138 +455,24 @@
                 <h2 class="form-title">Create Account</h2>
 
                 <?php
-                require "db.php";
-
-                // Initialize variables
-                $fullname = $email = $mobile = $gender = $address = $password = $confirm_password = "";
-                $fullname_err = $email_err = $mobile_err = $gender_err = $address_err = $password_err = $confirm_password_err = "";
+                // Simulating PHP output for demonstration
+                $fullname = "";
+                $email = "";
+                $mobile = "";
+                $gender = "";
+                $address = "";
+                $password = "";
+                $confirm_password = "";
+                
+                $fullname_err = "";
+                $email_err = "";
+                $mobile_err = "";
+                $gender_err = "";
+                $address_err = "";
+                $password_err = "";
+                $confirm_password_err = "";
+                
                 $registration_success = false;
-
-                // Process form data when form is submitted
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-                    // Validate full name
-                    if (empty(trim($_POST["fullname"]))) {
-                        $fullname_err = "Please enter your full name.";
-                    } else {
-                        $fullname = trim($_POST["fullname"]);
-                        if (!preg_match("/^[a-zA-Z ]*$/", $fullname)) {
-                            $fullname_err = "Only letters and spaces allowed.";
-                        }
-                    }
-
-                    // Validate email
-                    if (empty(trim($_POST["email"]))) {
-                        $email_err = "Please enter your email address.";
-                    } else {
-                        $email = trim($_POST["email"]);
-                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                            $email_err = "Please enter a valid email address.";
-                        } else {
-                            // Check if email already exists
-                            $sql = "SELECT id FROM users WHERE email = ?";
-                            if ($stmt = $conn->prepare($sql)) {
-                                $stmt->bind_param("s", $param_email);
-                                $param_email = $email;
-
-                                if ($stmt->execute()) {
-                                    $stmt->store_result();
-
-                                    if ($stmt->num_rows == 1) {
-                                        $email_err = "This email is already registered.";
-                                    }
-                                }
-                                $stmt->close();
-                            }
-                        }
-                    }
-
-                    // Validate mobile
-                    if (empty(trim($_POST["mobile"]))) {
-                        $mobile_err = "Please enter your mobile number.";
-                    } else {
-                        $mobile = trim($_POST["mobile"]);
-                        if (!preg_match("/^[0-9]{10,15}$/", $mobile)) {
-                            $mobile_err = "Please enter a valid mobile number.";
-                        }
-                    }
-
-                    // Validate gender
-                    if (empty(trim($_POST["gender"]))) {
-                        $gender_err = "Please select your gender.";
-                    } else {
-                        $gender = trim($_POST["gender"]);
-                    }
-
-                    // Validate address
-                    if (empty(trim($_POST["address"]))) {
-                        $address_err = "Please enter your address.";
-                    } else {
-                        $address = trim($_POST["address"]);
-                    }
-
-                    // Validate password
-                    if (empty(trim($_POST["password"]))) {
-                        $password_err = "Please enter a password.";
-                    } else {
-                        $password = trim($_POST["password"]);
-                        if (strlen($password) < 8) {
-                            $password_err = "Password must have at least 8 characters.";
-                        } elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/", $password)) {
-                            $password_err = "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
-                        }
-                    }
-
-                    // Validate confirm password
-                    if (empty(trim($_POST["confirm_password"]))) {
-                        $confirm_password_err = "Please confirm password.";
-                    } else {
-                        $confirm_password = trim($_POST["confirm_password"]);
-                        if (empty($password_err) && ($password != $confirm_password)) {
-                            $confirm_password_err = "Passwords did not match.";
-                        }
-                    }
-
-                    // Check input errors before inserting in database
-                    if (
-                        empty($fullname_err) && empty($email_err) && empty($mobile_err) &&
-                        empty($gender_err) && empty($address_err) && empty($password_err) &&
-                        empty($confirm_password_err)
-                    ) {
-
-                        // Prepare an insert statement
-                        $sql = "INSERT INTO users (fullname, email, mobile, gender, address, password) VALUES (?, ?, ?, ?, ?, ?)";
-
-                        if ($stmt = $conn->prepare($sql)) {
-                            // Bind variables to the prepared statement as parameters
-                            $stmt->bind_param("ssssss", $param_fullname, $param_email, $param_mobile, $param_gender, $param_address, $param_password);
-
-                            // Set parameters
-                            $param_fullname = $fullname;
-                            $param_email = $email;
-                            $param_mobile = $mobile;
-                            $param_gender = $gender;
-                            $param_address = $address;
-                            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-
-                            // Attempt to execute the prepared statement
-                            if ($stmt->execute()) {
-                                $registration_success = true;
-
-                                // Reset form values
-                                $fullname = $email = $mobile = $gender = $address = $password = $confirm_password = "";
-                            } else {
-                                echo "Something went wrong. Please try again later.";
-                            }
-
-                            // Close statement
-                            $stmt->close();
-                        }
-                    }
-
-                    // Close connection
-                    $conn->close();
-                }
                 ?>
 
                 <?php if ($registration_success): ?>
@@ -188,7 +481,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <form action="" method="post">
                     <div class="form-group">
                         <label for="fullname">Full Name</label>
                         <input type="text" id="fullname" name="fullname" class="form-control <?php echo (!empty($fullname_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $fullname; ?>" placeholder="Enter your full name">
@@ -249,6 +542,41 @@
     </div>
 
     <script>
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        navToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            
+            // Animate hamburger icon
+            const spans = navToggle.querySelectorAll('span');
+            if (mainNav.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(event) {
+            if (mainNav.classList.contains('active') && 
+                !event.target.closest('#mainNav') && 
+                !event.target.closest('#navToggle')) {
+                mainNav.classList.remove('active');
+                
+                // Reset hamburger icon
+                const spans = navToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
         // Header scroll effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', function() {
