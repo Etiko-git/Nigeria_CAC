@@ -7,44 +7,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
 </head>
 <body>
     <header id="header">
-    <div class="header-container">
-        <div class="logo" onclick="window.location.href='index.html';">
-            <div class="logo-text">ICRP</div>
-        </div>
-        
-        <!-- Add this hamburger menu button -->
-        <div class="nav-toggle" id="navToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        
-        <nav id="mainNav">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            
-            <!-- Move auth buttons inside nav for mobile -->
-            <div class="auth-buttons">
-                <a href="myIDlogin.html" class="btn btn-outline">Login</a>
-                <a href="register.php" class="btn btn-primary">Register</a>
+        <div class="header-container">
+            <div class="logo" onclick="window.location.href='index.html';">
+                <img src="img/logo.jpg" alt="CAC Nigeria Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-main">CAC</span>
+                    <span class="logo-sub">ICRP Portal</span>
+                </div>
             </div>
-        </nav>
-        
-        <!-- Keep auth buttons for desktop -->
-        <div class="auth-buttons">
-            <a href="myIDlogin.html" class="btn btn-outline">Login</a>
-            <a href="register.php" class="btn btn-primary">Register</a>
-        </div>
-    </div>
-</header>
+            
+            <!-- Mobile Navigation Toggle -->
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <!-- Desktop Navigation -->
+<nav id="mainNav">
+    <ul>
+        <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="service.php"><i class="fas fa-cogs"></i> Services</a></li>
+        <li><a href="#"><i class="fas fa-building"></i>  Registration</a></li>
+        <li><a href="#"><i class="fas fa-file-contract"></i> Compliance</a></li>
+        <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+    
+    <!-- Auth buttons for mobile view -->
+    
+</nav>
+
+<!-- Auth buttons for desktop view -->
+
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -52,8 +54,8 @@
             <h1 class="fade-in">Integrated Corporate Registration Portal</h1>
             <p class="fade-in">Streamlining business registration and corporate affairs in Nigeria. Fast, efficient, and transparent services for entrepreneurs and businesses.</p>
             <div class="hero-buttons fade-in">
-                <a href="myIDlogin.html" class="btn btn-accent">Login</a>
-                <a href="#" class="btn btn-outline">Learn More</a>
+                <a href="myIDlogin.html" class="btn btn-accent">Get Started</a>
+                <a href="service.php" class="btn btn-outline">Learn More</a>
             </div>
             <div class="hero-image zoom-in">
                 <img src="https://placehold.co/800x400/1b5e20/ffffff/png?text=Business+Registration+Made+Easy" alt="ICRP Services">
@@ -62,7 +64,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services">
+    <section class="services" id="services">
         <div class="section-title">
             <h2 class="fade-in">Our Services</h2>
             <p class="fade-in">We provide a comprehensive range of corporate registration and business services</p>
@@ -75,6 +77,9 @@
                 </div>
                 <h3>Company Registration</h3>
                 <p>Register your business name, limited liability company, or enterprise with our streamlined process.</p>
+                <div class="service-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
             </a>
             
             <a href="#" class="service-card fade-in">
@@ -83,6 +88,9 @@
                 </div>
                 <h3>Compliance Filing</h3>
                 <p>File your annual returns and other statutory documents efficiently through our platform.</p>
+                <div class="service-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
             </a>
             
             <a href="#" class="service-card fade-in">
@@ -91,12 +99,15 @@
                 </div>
                 <h3>Name Availability Search</h3>
                 <p>Check the availability of your proposed business name before registration.</p>
+                <div class="service-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
             </a>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="how-it-works">
+    <section class="how-it-works" id="how-it-works">
         <div class="section-title">
             <h2 class="fade-in">How It Works</h2>
             <p class="fade-in">Simple steps to register your business with our platform</p>
@@ -137,11 +148,39 @@
         </div>
     </section>
 
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-number">50,000+</div>
+                <div class="stat-label">Businesses Registered</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Online Support</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Satisfaction Rate</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-number">5 Days</div>
+                <div class="stat-label">Average Processing</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="footer-grid">
             <div class="footer-column">
-                <h3>About ICRP</h3>
+                <div class="footer-logo">
+                    <img src="img/logo.jpg" alt="CAC Nigeria Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-main">CAC</span>
+                        <span class="logo-sub">ICRP Portal</span>
+                    </div>
+                </div>
                 <p>The Integrated Corporate Registration Portal is a government initiative to simplify business registration and corporate affairs management in Nigeria.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -155,10 +194,10 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </div>
             
@@ -176,24 +215,55 @@
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
-                    <li><i class="fas fa-map-marker-alt"></i> 123 CAC Building, Central Business District, Abuja</li>
-                    <li><i class="fas fa-phone"></i> +234 800 123 4567</li>
-                    <li><i class="fas fa-envelope"></i> info@icrp.gov.ng</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Plot 1178, Shehu Shagari Way, Central Business District, Abuja</li>
+                    <li><i class="fas fa-phone"></i> +234 700 2255 2267</li>
+                    <li><i class="fas fa-envelope"></i> info@cac.gov.ng</li>
                 </ul>
             </div>
         </div>
         
         <div class="copyright">
-            <p>&copy; 2023 Integrated Corporate Registration Portal. All rights reserved.</p>
+            <p>&copy; 2024 Corporate Affairs Commission, Nigeria. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        const overlay = document.createElement('div');
+        
+        // Create overlay
+        overlay.className = 'overlay';
+        document.body.appendChild(overlay);
+        
+        navToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mainNav.classList.toggle('active');
+            navToggle.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        // Close mobile nav when clicking outside
+        overlay.addEventListener('click', function() {
+            mainNav.classList.remove('active');
+            navToggle.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        // Close mobile nav when clicking on links
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                navToggle.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+        
         // Scroll animations
         document.addEventListener('DOMContentLoaded', function() {
             const fadeElems = document.querySelectorAll('.fade-in');
-            const slideLeftElems = document.querySelectorAll('.slide-in-left');
-            const slideRightElems = document.querySelectorAll('.slide-in-right');
             const zoomElems = document.querySelectorAll('.zoom-in');
             
             // Intersection Observer for scroll animations
@@ -213,14 +283,6 @@
                 observer.observe(elem);
             });
             
-            slideLeftElems.forEach(elem => {
-                observer.observe(elem);
-            });
-            
-            slideRightElems.forEach(elem => {
-                observer.observe(elem);
-            });
-            
             zoomElems.forEach(elem => {
                 observer.observe(elem);
             });
@@ -235,35 +297,33 @@
                 }
             });
             
-            // Make service cards clickable
-            const serviceCards = document.querySelectorAll('.service-card');
-            serviceCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    // You can add specific navigation logic here
-                    alert('Navigating to ' + this.querySelector('h3').textContent + ' service page');
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 });
             });
         });
     </script>
-    <script>
-    // Mobile navigation toggle
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    
-    navToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-    
-    // Close mobile nav when clicking outside
-    document.addEventListener('click', function(event) {
-        if (mainNav.classList.contains('active') && 
-            !event.target.closest('#mainNav') && 
-            !event.target.closest('#navToggle')) {
-            mainNav.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
-</script>
+    <!-- Watermark overlay -->
+<div id="watermark">
+  TESTING SITE - NOT OFFICIAL
+</div>
+
+<!-- Marquee banner at bottom -->
+<div id="marquee-banner">
+  <div class="marquee-content">
+    <span>⚠️ THIS IS A TESTING SITE - NOT AN OFFICIAL CAC PORTAL ⚠️</span>
+    <span>⚠️ THIS IS A TESTING SITE - NOT AN OFFICIAL CAC PORTAL ⚠️</span>
+    <span>⚠️ THIS IS A TESTING SITE - NOT AN OFFICIAL CAC PORTAL ⚠️</span>
+  </div>
+</div>
 </body>
 </html>
