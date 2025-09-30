@@ -5,8 +5,11 @@
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - myID</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/myIDlogin.css">
+  <link rel="stylesheet" href="css/index.css?v=2">
+  <link rel="stylesheet" href="css/myIDlogin.css?v=2">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
   <style>
     /* Mobile Navigation Styles */
     .nav-toggle {
@@ -147,7 +150,11 @@
     <header id="header">
         <div class="header-container">
             <div class="logo" onclick="window.location.href='index.html';">
-                <div class="logo-text">ICRP</div>
+                <img src="img/logo.jpg" alt="CAC Nigeria Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="logo-main">CAC</span>
+                  
+                </div>
             </div>
             
             <!-- Hamburger menu button -->
@@ -159,11 +166,11 @@
             
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                    <li><a href="#"><i class="fas fa-building"></i> Business Registration</a></li>
+                    <li><a href="#"><i class="fas fa-file-contract"></i> Compliance</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 </ul>
                 
                 <!-- Auth buttons for mobile view -->
@@ -176,7 +183,7 @@
             <!-- Auth buttons for desktop view -->
             <div class="auth-buttons">
                 <a href="myIDlogin.html" class="btn btn-outline">Login</a>
-                <a href="register.php" class="btn btn-primary">Register</a>
+                <a href="register.php" class="btn btn-primary"> Register</a>
             </div>
         </div>
     </header>
@@ -203,12 +210,32 @@
       </p>
     </div>
   </main>
+    
+<!-- Watermark overlay -->
+<div id="watermark">
+  TESTING SITE - NOT OFFICIAL
+</div>
+
+<!-- Marquee banner at bottom -->
+<div id="marquee-banner">
+  <div class="marquee-content">
+    <span>⚠️ THIS IS A TESTING SITE - NOT AN OFFICIAL CAC PORTAL ⚠️</span>
+    <span>⚠️ THIS IS A TESTING SITE - NOT AN OFFICIAL CAC PORTAL ⚠️</span>
+    <span>⚠️ THIS IS A TESTING SITE - NOT AN OFFICIAL CAC PORTAL ⚠️</span>
+  </div>
+</div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-column">
-                <h3>About ICRP</h3>
+                <div class="footer-logo">
+                    <img src="img/logo.jpg" alt="CAC Nigeria Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-main">CAC</span>
+                        <span class="logo-sub">ICRP Portal</span>
+                    </div>
+                </div>
                 <p>The Integrated Corporate Registration Portal is a government initiative to simplify business registration and corporate affairs management in Nigeria.</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -221,11 +248,11 @@
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </div>
 
@@ -243,41 +270,58 @@
             <div class="footer-column">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
-                    <li><i class="fas fa-map-marker-alt"></i> 123 CAC Building, Central Business District, Abuja</li>
-                    <li><i class="fas fa-phone"></i> +234 800 123 4567</li>
-                    <li><i class="fas fa-envelope"></i> info@icrp.gov.ng</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Plot 1178, Shehu Shagari Way, Central Business District, Abuja</li>
+                    <li><i class="fas fa-phone"></i> +234 700 2255 2267</li>
+                    <li><i class="fas fa-envelope"></i> info@cac.gov.ng</li>
                 </ul>
             </div>
         </div>
 
         <div class="copyright">
-            <p>&copy; 2023 Integrated Corporate Registration Portal. All rights reserved.</p>
+            <p>&copy; 2024 Corporate Affairs Commission, Nigeria. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="qrcode.min.js"></script>
-    <script src="script.js"></script>
-    
+  	<script src="qrcode.min.js?v=2"></script>
+    <script src="script.js?v=2"></script>
     <script>
         // Mobile navigation toggle
         const navToggle = document.getElementById('navToggle');
         const mainNav = document.getElementById('mainNav');
+        const overlay = document.createElement('div');
         
-        navToggle.addEventListener('click', function() {
+        // Create overlay
+        overlay.className = 'overlay';
+        document.body.appendChild(overlay);
+        
+        navToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             mainNav.classList.toggle('active');
             navToggle.classList.toggle('active');
+            overlay.classList.toggle('active');
         });
         
         // Close mobile nav when clicking outside
-        document.addEventListener('click', function(event) {
-            if (mainNav.classList.contains('active') && 
-                !event.target.closest('#mainNav') && 
-                !event.target.closest('#navToggle')) {
+        overlay.addEventListener('click', function() {
+            mainNav.classList.remove('active');
+            navToggle.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        // Close mobile nav when clicking on links
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
                 mainNav.classList.remove('active');
                 navToggle.classList.remove('active');
-            }
+                overlay.classList.remove('active');
+            });
         });
     </script>
+    <script src="qrcode.min.js"></script>
+    <script src="script.js"></script>
+    
+    
 </body>
 
 </html>
